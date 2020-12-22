@@ -8,6 +8,7 @@
 import Accelerate
 import AVFoundation
 import Foundation
+import MediaPlayer
 import SwiftUI
 
 // Noise generating code is ported from Python:
@@ -451,7 +452,17 @@ struct ContentView: View {
         sleep(5)
         playSound(url)
         */
-        updateClick()
+        //updateClick()
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.addTarget { (commandEvent) -> MPRemoteCommandHandlerStatus in
+            playPause()
+            return MPRemoteCommandHandlerStatus.success
+        }
+
+        commandCenter.pauseCommand.addTarget { (commandEvent) -> MPRemoteCommandHandlerStatus in
+            playPause()
+            return MPRemoteCommandHandlerStatus.success
+        }        
     }
     
     private func updateClick() {
