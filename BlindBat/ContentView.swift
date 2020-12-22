@@ -430,10 +430,7 @@ struct ContentView: View {
                 in:5...100,
                 step:5
             )                        
-            Text("Hello, world!")
-                .padding()
-                .onAppear(perform: initialize)
-        }
+        }.onAppear(perform: initialize)
     }
     // User defaults:
     // https://www.hackingwithswift.com/books/ios-swiftui/storing-user-settings-with-userdefaults
