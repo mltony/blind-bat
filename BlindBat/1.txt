@@ -1,0 +1,13 @@
+test2.swift:263:9: warning: variable 'signal' was never mutated; consider changing to 'let' constant
+    var signal:[Float] = bandLimitedNoise(minFreq:minFreq, maxFreq:maxFreq, samples:sampleRate/10, sampleRate:sampleRate)
+    ~~~ ^
+    let
+test2.swift:111:13: warning: variable 'fi' was never mutated; consider changing to 'let' constant
+        var fi = freqs[i]
+        ~~~ ^
+        let
+test2.swift:77:34: warning: '4294967295' is not exactly representable as 'Float'; it becomes '4294967296'
+    return Float(arc4random()) / 0xFFFFFFFF
+                                 ^
+[0.00060518924, 0.0005685873, 0.00051789905, 0.00045379487, 0.00037725628, 0.00028957028, 0.00019231548, 8.734158e-05, -2.3257744e-05, -0.00013717898]
+[0.0, -0.0, -0.0, 0.0, 0.0, -0.0, -0.0, -0.0, 0.0, -0.0, 0.0]

@@ -1,0 +1,36 @@
+test2.swift:121:45: error: expected ',' separator
+    for i in reverse(1...(transitions.count -1)) {
+                                            ^
+          test2.swift:121:45: error: expected ',' separator
+    for i in reverse(1...(transitions.count -1)) {
+                                            ^
+                                           ,
+test2.swift:122:42: error: expected '{' after 'if' condition
+        if transitions[i] - t0 <= samples) {
+                                 ,
+test2.swift:122:42: error: expected '{' after 'if' condition
+        if transitions[i] - t0 <= samples) {
+                                                                      ^
+            ^
+test2.swift:121:14: error: cannot find 'reverse' in scope
+    for i in reverse(1...(transitions.count -1)) {
+             ^~~~~~~
+test2.swift:121:14: error: cannot find 'reverse' in scope
+    for i in reverse(1...(transitions.count -1)) {
+             ^~~~~~~
+test2.swift:140:13: warning: variable 'fi' was never mutated; consider changing to 'let' constant
+        var fi = freqs[i]
+        ~~~ ^
+        let
+test2.swift:166:9: warning: variable 'signal' was never mutated; consider changing to 'let' constant
+    var signal = fftNoise(f)
+    ~~~ ^
+    let
+test2.swift:140:13: warning: variable 'fi' was never mutated; consider changing to 'let' constant
+        var fi = freqs[i]
+        ~~~ ^
+        let
+test2.swift:166:9: warning: variable 'signal' was never mutated; consider changing to 'let' constant
+    var signal = fftNoise(f)
+    ~~~ ^
+    let
