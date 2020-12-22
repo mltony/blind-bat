@@ -435,21 +435,6 @@ struct ContentView: View {
     // User defaults:
     // https://www.hackingwithswift.com/books/ios-swiftui/storing-user-settings-with-userdefaults
     private func initialize() {
-        /*
-        print("Initialize!")
-        var signal = bandLimitedNoise(minFreq:1000, maxFreq:2000, samples:5*48000, sampleRate:48000)
-        signal = normalizeSignal(signal)
-        let directory = NSTemporaryDirectory()
-        let fileName = NSUUID().uuidString
-        // This returns a URL? even though it is an NSURL class method
-        let url:URL = NSURL.fileURL(withPathComponents: [directory, fileName])!
-        //let url = URL(fileURLWithPath: "/Users/tony/1.wav")
-        WriteWav(signal, url, 48000)
-        playSound(url)
-        sleep(5)
-        playSound(url)
-        */
-        //updateClick()
         let commandCenter = MPRemoteCommandCenter.shared()
         commandCenter.playCommand.addTarget { (commandEvent) -> MPRemoteCommandHandlerStatus in
             playPause()
