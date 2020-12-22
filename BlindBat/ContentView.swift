@@ -332,6 +332,8 @@ struct ContentView: View {
     @State var frequencyBandwidthPercentile:Float = UserDefaults.standard.float(forKey: "frequencyBandwidthPercentile")
     @State var clickFrequency:Float = UserDefaults.standard.float(forKey: "clickFrequency")
     @State var clickLength:Float = UserDefaults.standard.float(forKey: "clickLength")
+    @State var isPlaying:Bool = false
+    @State var playButtonText:String = "Play"
     
     private func getFrequency() -> Float {
         let minFreq:Float = 200
@@ -358,6 +360,12 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Button(action: {
+                self.playPause()
+            }) {
+                Text(self.playButtonText)
+            }
+        
             Text("Frequency")
             Slider(
                 value: Binding<Float>(
@@ -465,7 +473,22 @@ struct ContentView: View {
         let fileName = NSUUID().uuidString
         let url:URL = NSURL.fileURL(withPathComponents: [directory, fileName])!
         WriteWav(signal, url, 48000)
-        playSound(url, continuously:true)
+        if (isPlaying) {
+            playSound(url, continuously:true)
+        }
+    }
+    
+    private func playPause() {
+        self.isPlaying = !self.isPlaying
+        if (self.isPlaying) {
+            self.updateClick()
+            playButtonText = "Pause"
+        } else {
+            if (player != nil) {
+                player!.stop()
+            }
+            playButtonText = "Play"
+        }
     }
     
     let synthesizer = AVSpeechSynthesizer()
