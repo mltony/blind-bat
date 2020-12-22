@@ -291,7 +291,10 @@ func playSound(_ url:URL, continuously:Bool = false) {
         player!.stop()
     }
     do {
-        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)            
+        //AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
+        //AVAudioSession.sharedInstance().setActive(true, error: nil)
+        //try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)            
+        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient, mode: .default)            
         try AVAudioSession.sharedInstance().setActive(true)
 
         /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
@@ -363,7 +366,7 @@ struct ContentView: View {
                     }, 
                     set: {
                         self.frequencyPercentile = $0
-                        //let str = "\(self.frequencyPercentile)%"
+                        UserDefaults.standard.set(self.frequencyPercentile, forKey: "frequencyPercentile")
                         speak(getHertzString(getFrequency()))
                         updateClick()
                     }
@@ -379,7 +382,7 @@ struct ContentView: View {
                     }, 
                     set: {
                         self.frequencyBandwidthPercentile = $0
-                        //let str = "\(self.frequencyPercentile)%"
+                        UserDefaults.standard.set(self.frequencyBandwidthPercentile, forKey: "frequencyBandwidthPercentile")
                         speak(getHertzString(getFrequencyBandwidth()))
                         updateClick()
                     }
@@ -395,6 +398,7 @@ struct ContentView: View {
                     }, 
                     set: {
                         self.clickFrequency = $0
+                        UserDefaults.standard.set(self.clickFrequency, forKey: "clickFrequency")
                         speak(getHertzString(self.clickFrequency))
                         updateClick()
                     }
@@ -410,7 +414,7 @@ struct ContentView: View {
                     }, 
                     set: {
                         self.clickLength = $0
-                        //speak(getHertzString(self.impulseFrequency))
+                        UserDefaults.standard.set(self.clickLength, forKey: "clickLength")
                         updateClick()
                     }
                 ),
