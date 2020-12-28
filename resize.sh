@@ -1,5 +1,7 @@
 #!/bin/bash
-convert blindbat.png -resize 58x58 blindbat58.png
-convert blindbat.png -resize 80x80 blindbat80.png
-convert blindbat.png -resize 120x120 blindbat120.png
-convert blindbat.png -resize 180x180 blindbat180.png
+array=( 40 60 87 20 29 76 152 167 58 80 120 180 )
+for i in "${array[@]}"
+do
+    echo "${i}x${i}"
+    convert blindbat.png -resize ${i}x${i} blindbat${i}.png
+done
